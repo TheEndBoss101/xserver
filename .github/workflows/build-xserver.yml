@@ -84,9 +84,10 @@ jobs:
               run:  .gitlab-ci/manpages-check
 
             - name: ls
-              run: |
-                ls
-                ls build
+              run: ls -la
+
+            - name: lsb
+              run: ls -la build
 
 
     drivers-build-ubuntu:
