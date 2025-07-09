@@ -79,6 +79,16 @@ jobs:
             - name: manpage check
               run:  .gitlab-ci/manpages-check
 
+
+            - name: ninja
+              run:  .gitlab-ci/manpages-check
+
+            - name: ls
+              run: |
+                ls
+                ls build
+
+
     drivers-build-ubuntu:
         env:
             MESON_ARGS: -Dc_args="-fno-common" -Dprefix=/usr -Dxephyr=false -Dwerror=false -Dxcsecurity=false -Dxorg=true -Dxvfb=false -Dxnest=false
