@@ -54,6 +54,12 @@ jobs:
             - name: build
               run:  .gitlab-ci/meson-build.sh
 
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: xserver-build-ubuntu
+                path: build/*
+
             - name: tests (may fail)
               continue-on-error: true
               run:  meson test -C "${{ env.MESON_BUILDDIR }}" --print-errorlogs || true
@@ -123,6 +129,12 @@ jobs:
             - name: compile drivers
               run: .github/scripts/compile-drivers.sh
 
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: drivers-build-ubuntu
+                path: build/*
+
     xserver-build-macos:
         env:
             MESON_ARGS: -Dprefix=/tmp -Dglx=false -Dxnest=false
@@ -162,6 +174,12 @@ jobs:
 
             - name: build
               run:  .gitlab-ci/meson-build.sh
+
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: xserver-build-macos
+                path: build/*
 
             - name: tests (may fail)
               continue-on-error: true
